@@ -289,12 +289,7 @@ export default function Home() {
       return grantedDevice;
     }
 
-    const requestedDevice = await appRuntime.runPromise(requestDeviceEffect);
-    if (requestedDevice.id !== config.id) {
-      throw new Error("重新授权时请选择当前设备");
-    }
-
-    return requestedDevice;
+    return await appRuntime.runPromise(requestDeviceEffect);
   };
 
   const handleDeleteDevice = async () => {
